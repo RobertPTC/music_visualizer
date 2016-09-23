@@ -1,0 +1,39 @@
+{
+  "name": "music_visualizer",
+  "version": "1.0.0",
+  "description": "Visual audio files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertPTC/music_visualizer.git"
+  },
+  "author": "Robert Cunningham <rptc3000@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RobertPTC/music_visualizer/issues"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "homepage": "https://github.com/RobertPTC/music_visualizer#readme",
+  "dependencies": {
+    "browserify": "^13.1.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "nodemon": "^1.10.2",
+    "open": "0.0.5",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babelify": "^7.3.0",
+    "gulp-clean-css": "^2.0.12",
+    "gulp-concat": "^2.6.0"
+  }
+}
