@@ -5,7 +5,7 @@ let RenderCanvas = (function renderCanvas() {
   let canvas = document.getElementById('visualization-canvas'),
       canvasCtx = canvas.getContext('2d'),
       windowScreenWidth = window.screen.width,
-      chartW = windowScreenWidth <= 960 ? windowScreenWidth : windowInnerWidth * .66,
+      chartW = windowScreenWidth <= 960 ? windowScreenWidth : windowScreenWidth * .66,
       glitterCounter = 0,
       glitters = [],
       backgroundGlitters = 30,
