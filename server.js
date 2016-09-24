@@ -3,7 +3,6 @@ var express = require('express'),
     path = require('path'),
     open = require('open'),
     app = express();
-console.log('publicAssetsDir ', path.dirname(__dirname));
 app.use(express.static(__dirname));
 app.listen(port, function() {
   console.log('app listening on port ' + port);
