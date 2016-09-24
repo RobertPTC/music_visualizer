@@ -1,12 +1,12 @@
 var express = require('express'),
-    port = process.env.PORT || 3010,
     path = require('path'),
     open = require('open'),
     app = express();
 console.log('process env ', process.env.PORT);
+app.set('port', (process.env.PORT || 3111));
 app.use(express.static(__dirname));
-app.listen(port, function() {
-  console.log('app listening on port ' + port);
+app.listen(app.get('port'), function() {
+  console.log('app listening on port ' + app.get('port'));
   //open('http://localhost:3010');
 });
 
