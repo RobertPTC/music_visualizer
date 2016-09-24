@@ -1,5 +1,5 @@
 var express = require('express'),
-    port = 3010,
+    port = process.env.PORT || 3010,
     path = require('path'),
     open = require('open'),
     app = express();
