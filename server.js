@@ -11,7 +11,9 @@ app.get('/', function(req, res) {
 
 app.listen(app.get('port'), function() {
   console.log('app listening on port ' + app.get('port'));
-  //open('http://localhost:3010');
+  if (process.env.NODE_ENV !== 'production') {
+    open('http://localhost:' + app.get('port'));
+  }
 });
 
 
