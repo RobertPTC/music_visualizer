@@ -11,11 +11,15 @@ let RenderVisualization = (function renderVisualization() {
         freqByteData = appDataRv.getData('freqByteData'),
         waveData = appDataRv.getData('waveData'),
         levelsData = appDataRv.getData('levelsData'),
-        levelBins = appDataRv.getData('levelBins'),
+        binCount = appDataRv.getData('binCount'),
         levelsHistory = appDataRv.getData('levelsHistory');
 
     analyser.getByteTimeDomainData(timeByteData);
     analyser.getByteFrequencyData(freqByteData);
+
+    for(var j = 0; j < binCount; j++) {
+      waveData[j] = ((timeByteData[j] - 128) /128 );
+    }
 
     renderCanvas.drawWaveform();
   }

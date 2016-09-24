@@ -1,15 +1,38 @@
-.visualization-controls {
-
+@font-face {
+    font-family: 'Typewriter';
+    src: url('../typewriter-a602-dead-postman-2004/typewriterA602.ttf');
 }
 
-.visualization-controls__start {
-    border: none;
+.visualization-controls__container {
+    position: relative;
+    width: 30%;
+    margin: auto;
+}
+
+.visualization-controls__button {
+    font-family: 'Typewriter';
     padding: .625rem;
+    padding-top: .9375rem;
+    padding-bottom: .9375rem;
     background: white;
-    border: 1px solid black;
     border-radius: 5px;
+    position: absolute;
+    font-size: 1.125rem;
+}
+.visualization-controls__button--start {
+    left: 0;
+    border: 2px solid rgb(0, 35, 102);
+}
+.visualization-controls__button--stop {
+    right: 0;
+    border: 2px solid firebrick;
+}
+.visualization-controls__button--start:hover {
+    color: white;
+    background: rgb(0, 35, 102);
 }
 
-.visualization-controls__stop {
-
+.visualization-controls__button--stop:hover {
+    color: white;
+    background: firebrick;
 }

@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="dist/style.min.css"/>
 </head>
 <body>
-<canvas width="500" height="450" id="visualization-canvas"></canvas>
-<div>
-    <button class="visualization-controls__start" id="start-visualization">Start Visualization</button>
-    <button id="stop-visualization">Stop Visualization</button>
+<div class="canvas">
+    <canvas id="visualization-canvas"></canvas>
+</div>
+<div class="visualization-controls__container">
+    <button class="visualization-controls__button visualization-controls__button--start" id="start-visualization">Start Visualization</button>
+    <button class="visualization-controls__button visualization-controls__button--stop" id="stop-visualization">Stop Visualization</button>
 </div>
 
 

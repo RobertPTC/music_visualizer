@@ -30,6 +30,6 @@
 //
 //};
 window.onload = () => {
-  require('./loadAudioBuffer');
+  require('./loadAudioBuffer').init();
   require('./visualizationControls');
 };
