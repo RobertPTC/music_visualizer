@@ -33,5 +33,5 @@ gulp.task('watch', ['compileJs', 'compileCss', 'app'], function() {
     gulp.watch('scripts/*.js', ['compileJs']);
     gulp.watch('styles/*.css', ['compileCss']);
 });
-
+gulp.task('production', ['compileJs', 'compileCss']);
 gulp.task('default', ['compileJs', 'compileCss', 'app', 'watch']);
