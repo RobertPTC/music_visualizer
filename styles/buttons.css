@@ -36,3 +36,32 @@
     color: white;
     background: firebrick;
 }
+
+@media screen and (min-device-width: 360px) and (max-width: 600px) {
+    .visualization-controls__container {
+        position: relative;
+        width: 50%;
+        margin: auto;
+    }
+    .visualization-controls__button {
+        font-family: 'Typewriter';
+        padding: .625rem;
+        padding-top: .9375rem;
+        padding-bottom: .9375rem;
+        background: white;
+        position: relative;
+        margin: auto;
+        border-radius: 5px;
+        font-size: 1.125rem;
+        width: 100%;
+        display: block;
+        margin-top: .625rem;
+    }
+}
+@media screen and (min-device-width: 600px) and (max-width: 960px) {
+    .visualization-controls__container {
+        position: relative;
+        width: 70%;
+        margin: auto;
+    }
+}

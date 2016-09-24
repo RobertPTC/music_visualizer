@@ -1,7 +1,7 @@
 var BeatDetection = (function beatDetection() {
   let partSize = 22050,
       parts,
-      peaks = []
+      peaks = [];
   return {
     getPeaks: (data) => {
       parts = data[0].length / partSize;

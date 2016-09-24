@@ -5,7 +5,6 @@ let LoadAudio = (function getAudioData() {
 
   let _audioData,
       _levelsCount = 16,
-      _length = 256,
       _tempo = 99,
       _levelBins,
       _timeByteData,
@@ -17,6 +16,8 @@ let LoadAudio = (function getAudioData() {
       analyser = audioCtx.createAnalyser(),
       binCount,
       buffer = renderedBuffer;
+
+    //Stuff for determing beat
     //peaks = beatDetection.getPeaks([buffer.getChannelData(0), buffer.getChannelData(1)]),
     //groups = beatDetection.getIntervals(peaks),
     //top = groups.sort((intA, intB) => {
@@ -99,6 +100,7 @@ let LoadAudio = (function getAudioData() {
 
   return {
     init: () => {
+
       _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       let offlineCtx = new OfflineAudioContext(2,44100*40,44100),
           source = offlineCtx.createBufferSource(),
