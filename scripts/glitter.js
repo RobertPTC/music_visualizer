@@ -30,7 +30,7 @@ Glitter.prototype.draw = function(context) {
   if (this.type === 'background') {
     this.x = this.x - .5;
   } else {
-    this.x -= 5;
+    this.x -= 10;
   }
 
 
