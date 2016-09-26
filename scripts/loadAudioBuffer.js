@@ -11,7 +11,7 @@ let LoadAudio = (function getAudioData() {
       _freqByteData,
       _audioCtx;
 
-  function _handleBufferRendering(renderedBuffer, audioCtx, levelHistory, waveData, levelsData, callback) {
+  function _handleBufferRendering(renderedBuffer, audioCtx, levelHistory, waveData, levelsData) {
     let song = audioCtx.createBufferSource(),
       analyser = audioCtx.createAnalyser(),
       binCount,
@@ -57,12 +57,7 @@ let LoadAudio = (function getAudioData() {
     appDataLb.setData('levelsData', levelsData);
     appDataLb.setData('levelBins', _levelBins);
     appDataLb.setData('tempo', _tempo);
-
-    return new Promise((resolve) => {
-      if (callback) {
-        callback();
-      }
-    });
+    return appDataLb;
   }
 
   function _handleAudioData(buffer, offlineCtx, source, audioCtx, levelHistory, levelsData, waveData) {
@@ -100,29 +95,29 @@ let LoadAudio = (function getAudioData() {
 
   return {
     init: () => {
-
-      _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      let offlineCtx = new OfflineAudioContext(2,44100*40,44100),
+      return new window.Promise((resolve, reject) => {
+        _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        let offlineCtx = new OfflineAudioContext(2, 44100 * 40, 44100),
           source = offlineCtx.createBufferSource(),
           levelHistory = [],
           levelsData = [],
           waveData = [],
-          request = new XMLHttpRequest();
+          request = new window.XMLHttpRequest();
+        request.open('GET', 'love.mp3', true);
 
-      request.open('GET', 'love.mp3', true);
+        request.responseType = 'arraybuffer';
 
-      request.responseType = 'arraybuffer';
-
-      request.onload = function() {
-        _audioData = request.response;
-        _createAudioDataPromise(offlineCtx).then((buffer) => {
-          _handleAudioData(buffer, offlineCtx, source, _audioCtx).then((renderedBuffer) => {
-            _handleBufferRendering(renderedBuffer, _audioCtx, levelHistory, waveData, levelsData);
-          })
-        });
-      };
-      request.send();
-    },
+        request.onload = function () {
+          _audioData = request.response;
+          _createAudioDataPromise(offlineCtx).then((buffer) => {
+            _handleAudioData(buffer, offlineCtx, source, _audioCtx).then((renderedBuffer) => {
+              resolve(_handleBufferRendering(renderedBuffer, _audioCtx, levelHistory, waveData, levelsData));
+            })
+          });
+        };
+        request.send();
+      });
+      },
     reInit: (callback) => {
       let offlineCtx = new OfflineAudioContext(2,44100*40,44100),
           source = offlineCtx.createBufferSource(),
@@ -131,7 +126,7 @@ let LoadAudio = (function getAudioData() {
           waveData = [];
       return _createAudioDataPromise(offlineCtx).then((buffer) => {
          return _handleAudioData(buffer, offlineCtx, source, _audioCtx).then((renderedBuffer) => {
-           _handleBufferRendering(renderedBuffer, _audioCtx, levelHistory, waveData, levelsData, callback);
+           _handleBufferRendering(renderedBuffer, _audioCtx, levelHistory, waveData, levelsData);
         })
       });
     }

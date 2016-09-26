@@ -13,12 +13,14 @@ let VisualizationControls = (function visualizationControls() {
 
   startVisualization.addEventListener('click', () => {
     if (!appDataVc.getData('reInit')) {
-      let song = appDataVc.getData('song');
-      console.log('song ', song);
-      song.start(0);
-      appDataVc.setData('startTime', Date.now());
-      appDataVc.setData('reInit', true);
-      renderVisualization.visualize();
+      require('./loadAudioBuffer').init().then(() => {
+        let song = appDataVc.getData('song');
+        console.log('song ', song);
+        song.start(0);
+        appDataVc.setData('startTime', Date.now());
+        appDataVc.setData('reInit', true);
+        renderVisualization.visualize();
+      });
     } else {
       LoadAudioBuffer.reInit(_callback).then((data) => {
         let song = appDataVc.getData('song'),
